@@ -10,6 +10,6 @@ class MainViewModel : ViewModel() {
 
 
     fun triggerLiveData() {
-        _liveData.value = "New Value"
+        _liveData.value = "Live Data Triggered!"
     }
 }

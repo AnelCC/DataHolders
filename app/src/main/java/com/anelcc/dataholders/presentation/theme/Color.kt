@@ -1,4 +1,4 @@
-package com.anelcc.dataholders.ui.theme
+package com.anelcc.dataholders.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
