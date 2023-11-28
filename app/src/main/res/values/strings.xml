@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DataHolders</string>
+    <string name="live_data">Live Data</string>
+
 </resources>
