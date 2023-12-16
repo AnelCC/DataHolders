@@ -8,14 +8,13 @@ import com.anelcc.dataholders.presentation.MainViewModel
 
 class MainActivity : ComponentActivity() {
 
-    val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.livedata.setOnClickListener {
            viewModel.triggerLiveData()
