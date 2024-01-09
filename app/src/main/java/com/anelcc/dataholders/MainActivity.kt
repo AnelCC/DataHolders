@@ -3,8 +3,10 @@ package com.anelcc.dataholders
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.anelcc.dataholders.databinding.ActivityMainBinding
 import com.anelcc.dataholders.presentation.MainViewModel
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -19,6 +21,9 @@ class MainActivity : ComponentActivity() {
         binding.livedata.setOnClickListener {
            viewModel.triggerLiveData()
         }
+        binding.stateFlow.setOnClickListener {
+           viewModel.triggerStateFlow()
+        }
 
         observeLiveData()
     }
@@ -26,6 +31,11 @@ class MainActivity : ComponentActivity() {
     private fun observeLiveData() {
         viewModel.liveData.observe(this) {
             binding.livedatatitle.text = it
+        }
+        lifecycleScope.launch {
+            viewModel.stateFlow.collect {
+                binding.stateFlowTitle.text = it
+            }
         }
     }
 }
