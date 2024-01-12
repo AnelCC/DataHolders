@@ -3,6 +3,9 @@ package com.anelcc.dataholders.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class MainViewModel : ViewModel() {
@@ -26,4 +29,15 @@ class MainViewModel : ViewModel() {
     fun triggerStateFlow() {
         _stateFlow.value = "State Flow Triggered!"
     }
+
+    fun triggerFlow(): Flow<String> {
+        return flow { // Use the 'flow' builder
+            repeat(5) {
+                // Now 'emit' and 'delay' are in the correct context
+                emit("Item $it")
+                delay(1000L)
+            }
+        }
+    }
+
 }
