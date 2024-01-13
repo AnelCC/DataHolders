@@ -30,11 +30,13 @@ class MainViewModel : ViewModel() {
         _stateFlow.value = "State Flow Triggered!"
     }
 
+    //regular flow will no save the state and it will refreshed if we rotate the phone
+    //this will no be initialized until we collect the data
     fun triggerFlow(): Flow<String> {
         return flow { // Use the 'flow' builder
             repeat(5) {
                 // Now 'emit' and 'delay' are in the correct context
-                emit("Item $it")
+                emit("Item ${it+1}")
                 delay(1000L)
             }
         }

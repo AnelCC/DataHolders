@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.anelcc.dataholders.databinding.ActivityMainBinding
 import com.anelcc.dataholders.presentation.MainViewModel
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +26,11 @@ class MainActivity : ComponentActivity() {
            viewModel.triggerStateFlow()
         }
         binding.flow.setOnClickListener {
-
+            lifecycleScope.launch {
+                viewModel.triggerFlow().collectLatest {
+                    binding.flowTitle.text = it
+                }
+            }
         }
         observeLiveData()
     }
