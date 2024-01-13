@@ -24,7 +24,9 @@ class MainActivity : ComponentActivity() {
         binding.stateFlow.setOnClickListener {
            viewModel.triggerStateFlow()
         }
+        binding.flow.setOnClickListener {
 
+        }
         observeLiveData()
     }
 

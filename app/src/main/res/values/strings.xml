@@ -2,5 +2,6 @@
     <string name="app_name">DataHolders</string>
     <string name="live_data">Live Data</string>
     <string name="state_flow">State Flow</string>
+    <string name="flow"> Flow</string>
 
 </resources>
