@@ -3,10 +3,15 @@ package com.anelcc.dataholders.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
     //Live data contain data with even rotate to phone
@@ -19,7 +24,12 @@ class MainViewModel : ViewModel() {
     //Flows can be a hot flow (they will collecting values)
     // and cold flow will if there is not collector
     private val _stateFlow = MutableStateFlow("Hello World!")
-    val stateFlow: MutableStateFlow<String> = _stateFlow
+    val stateFlow = _stateFlow.asStateFlow()
+
+    //Share flow will keep the value and be able to access the data after any time on the state
+    // while state flow will keep the data but only recover if we rotate the phone
+    private val _shareFlow = MutableSharedFlow<String>()
+    val shareFlow = _shareFlow.asSharedFlow()
 
 
     fun triggerLiveData() {
