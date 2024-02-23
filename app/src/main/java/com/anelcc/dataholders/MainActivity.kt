@@ -1,8 +1,10 @@
 package com.anelcc.dataholders
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import androidx.compose.material3.Snackbar
 import androidx.lifecycle.lifecycleScope
 import com.anelcc.dataholders.databinding.ActivityMainBinding
 import com.anelcc.dataholders.presentation.MainViewModel
@@ -32,7 +34,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        
+        binding.shareFlow.setOnClickListener {
+            viewModel.triggerShareFlow()
+        }
+
         observeLiveData()
     }
 
@@ -43,6 +48,7 @@ class MainActivity : ComponentActivity() {
         lifecycleScope.launch {
             viewModel.stateFlow.collect {
                 binding.stateFlowTitle.text = it
+                Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -3,6 +3,7 @@ package com.anelcc.dataholders.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
     //Live data contain data with even rotate to phone
@@ -48,6 +50,12 @@ class MainViewModel : ViewModel() {
                 emit("Item ${it+1}")
                 delay(1000L)
             }
+        }
+    }
+
+    fun triggerShareFlow() {
+        viewModelScope.launch {
+            _shareFlow.emit("Share Flow Triggered!")
         }
     }
 
