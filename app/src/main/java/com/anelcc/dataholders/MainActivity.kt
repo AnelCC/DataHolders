@@ -51,5 +51,11 @@ class MainActivity : ComponentActivity() {
                 Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
             }
         }
+        lifecycleScope.launch {
+            viewModel.shareFlow.collect {
+                binding.shareFlowTitle.text = it
+                Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
