@@ -1,4 +1,5 @@
 # Data Holders 
+The data holders/streams are used in Kotlin/Android development to manage asynchronous data and UI state updates, but they have different behaviors and use cases.
 
 ## Live Data
 LiveData is an observable data holder class. Unlike a regular observable, LiveData is lifecycle-aware, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. This awareness ensures LiveData only updates app component observers that are in an active lifecycle state.
@@ -22,6 +23,11 @@ If an activity or fragment is recreated due to a configuration change, like devi
 You can extend a LiveData object using the singleton pattern to wrap system services so that they can be shared in your app. The LiveData object connects to the system service once, and then any observer that needs the resource can just watch the LiveData object. For more information, see Extend LiveData.
 
 
+## Flows
+"flows" refer to Kotlin coroutine flows, a way to represent and manage asynchronous streams of data. They are essentially a type that can emit multiple values sequentially over time, unlike suspend functions which return only one value.
+
+StateFlow and SharedFlow are Flow APIs that enable flows to optimally emit state updates and emit values to multiple consumers.
 
 ### References
 https://developer.android.com/topic/libraries/architecture/livedata
+https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
