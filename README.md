@@ -28,6 +28,15 @@ You can extend a LiveData object using the singleton pattern to wrap system serv
 
 StateFlow and SharedFlow are Flow APIs that enable flows to optimally emit state updates and emit values to multiple consumers.
 
+### Flow (regular flow)
+- Type: Cold stream
+- Purpose: Represents a stream of values asynchronously emitted over time.
+- Behavior: Does not emit anything until collected. Every collector gets its own independent stream.
+- Use case: One-time operations, e.g., making network calls, database queries, processing data streams.
+- Threading: Can be used with suspend functions, supports operators like map, filter.
+- No built-in state: Does not hold or cache the last emitted value.
+
+
 ### References
 https://developer.android.com/topic/libraries/architecture/livedata
 https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
