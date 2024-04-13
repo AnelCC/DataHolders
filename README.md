@@ -37,6 +37,16 @@ StateFlow and SharedFlow are Flow APIs that enable flows to optimally emit state
 - No built-in state: Does not hold or cache the last emitted value.
 
 
+### StateFlow
+- Type: Hot stream with state
+- Purpose: Holds a single updatable data value and emits updates to collectors.
+- Behavior: Always has a current value. When collected, emits the latest value immediately and subsequently any changes.
+- Use case: UI state management, where you want to observe a state that can change over time and always want the latest value.
+- Threading: Designed to be thread-safe.
+- Similar to: LiveData but for Kotlin Coroutines.
+- Key feature: Always replays the current state to new subscribers.
+
+
 ### References
 https://developer.android.com/topic/libraries/architecture/livedata
 https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
