@@ -46,6 +46,14 @@ StateFlow and SharedFlow are Flow APIs that enable flows to optimally emit state
 - Similar to: LiveData but for Kotlin Coroutines.
 - Key feature: Always replays the current state to new subscribers.
 
+### SharedFlow
+- Type: Hot stream, more general than StateFlow
+- Purpose: Broadcasts emitted values to multiple subscribers.
+- Behavior: Does not hold a single value by default but can be configured to replay a specified number of past emissions.
+- Use case: Event buses, one-time events like navigation commands, showing Toasts, or any multi-subscriber broadcast.
+- Configurable: Can buffer values, replay last n emissions.
+- No initial value: Unlike StateFlow, SharedFlow doesn’t require an initial value.
+
 
 ### References
 https://developer.android.com/topic/libraries/architecture/livedata
