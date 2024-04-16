@@ -54,6 +54,14 @@ StateFlow and SharedFlow are Flow APIs that enable flows to optimally emit state
 - Configurable: Can buffer values, replay last n emissions.
 - No initial value: Unlike StateFlow, SharedFlow doesn’t require an initial value.
 
+### LiveData
+- Type: Lifecycle-aware observable data holder 
+- Purpose: Provides data updates to UI components, automatically managing subscriptions based on lifecycle state (e.g., only active when UI is started/resumed). 
+- Behavior: Holds a single value and emits it on subscription, also emits updates. 
+- Use case: Android UI data binding, reactive UI updates that respect lifecycle to avoid leaks. 
+- Threading: Can post values from background threads. 
+- Limitations: Works only on Android, tied to lifecycle, less flexible compared to Kotlin Flows. 
+- Similar to: StateFlow but lifecycle-aware.
 
 ### References
 https://developer.android.com/topic/libraries/architecture/livedata
