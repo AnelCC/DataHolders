@@ -36,7 +36,6 @@ StateFlow and SharedFlow are Flow APIs that enable flows to optimally emit state
 - Threading: Can be used with suspend functions, supports operators like map, filter.
 - No built-in state: Does not hold or cache the last emitted value.
 
-
 ### StateFlow
 - Type: Hot stream with state
 - Purpose: Holds a single updatable data value and emits updates to collectors.
@@ -62,6 +61,19 @@ StateFlow and SharedFlow are Flow APIs that enable flows to optimally emit state
 - Threading: Can post values from background threads. 
 - Limitations: Works only on Android, tied to lifecycle, less flexible compared to Kotlin Flows. 
 - Similar to: StateFlow but lifecycle-aware.
+
+## Summary
+| Feature                 | Flow                  | StateFlow                  | SharedFlow                     | LiveData                   |
+| ----------------------- | --------------------- | -------------------------- | ------------------------------ | -------------------------- |
+| Cold or Hot?            | Cold                  | Hot                        | Hot                            | Hot                        |
+| Holds state?            | No                    | Yes (single current value) | Optional (configurable replay) | Yes (single current value) |
+| Lifecycle-aware?        | No                    | No                         | No                             | Yes                        |
+| Replays last value?     | No                    | Yes                        | Configurable (0 or more)       | Yes                        |
+| Requires initial value? | No                    | Yes                        | No                             | Yes                        |
+| Suitable for UI state?  | Sometimes             | Yes                        | Sometimes                      | Yes                        |
+| Suitable for events?    | Sometimes             | No                         | Yes                            | Limited                    |
+| Platform                | Kotlin (any platform) | Kotlin (any platform)      | Kotlin (any platform)          | Android only               |
+
 
 ### References
 https://developer.android.com/topic/libraries/architecture/livedata
