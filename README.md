@@ -74,6 +74,11 @@ StateFlow and SharedFlow are Flow APIs that enable flows to optimally emit state
 | Suitable for events?    | Sometimes             | No                         | Yes                            | Limited                    |
 | Platform                | Kotlin (any platform) | Kotlin (any platform)      | Kotlin (any platform)          | Android only               |
 
+### When to use what?
+* Use Flow for async operations and streams where no state caching is needed (no save the state and it will refreshed if we rotate the phone).
+* Use StateFlow for UI state or any observable state that always has a current value (store state and the flow benefit to update the UI).
+* Use SharedFlow for events or broadcasts where you want multiple subscribers to get emissions, without holding a single current state (keep the value and be able to access the data after any time on the state).
+* Use LiveData when you want lifecycle-aware reactive data in Android UI with minimal boilerplate (Live data do not use more is deprecating).
 
 ### References
 https://developer.android.com/topic/libraries/architecture/livedata
